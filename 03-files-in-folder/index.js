@@ -9,8 +9,8 @@ async function printFiles() {
       if (file.isFile()) {
         const extension = path.extname(file.name);
         const name = path.basename(file.name, extension);
-        const size = fs.stat(`./secret-folder/${file.name}`);
-        console.log(`${name} - ${extension} - ${size}`);
+        const size = await fs.stat(`03-files-in-folder/secret-folder/${file.name}`, file);
+        console.log(`${name} - ${extension} - ${size.size}b`);
       }
     } catch (err) {
       console.error(err);
